@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>花脸猫&amp;瞌睡鱼 技术博客</title>
+    <link>huangpeng1126.github.io/</link>
+    <description>Recent content on 花脸猫&amp;瞌睡鱼 技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Aug 2021 17:41:27 +0800</lastBuildDate><atom:link href="huangpeng1126.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搜索评测数据集</title>
+      <link>huangpeng1126.github.io/posts/%E6%90%9C%E7%B4%A2%E8%AF%84%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/</link>
+      <pubDate>Wed, 11 Aug 2021 17:41:27 +0800</pubDate>
+      
+      <guid>huangpeng1126.github.io/posts/%E6%90%9C%E7%B4%A2%E8%AF%84%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/</guid>
+      <description>介绍在搜索领域的研究中，经常使用的评测数据集
+Ad-hoc搜索 Ad-hoc搜索通常意义上就是我们常用的web搜索，例如百度、谷歌等。
+Robust </description>
+    </item>
+    
+  </channel>
+</rss>
