@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://huangpeng1126.github.iom/"
+baseURL = "https://huangpeng1126.github.io/"
 title = "瞌睡鱼&花脸猫 个人网站"
 languageCode = "zh-CN"
 hasCJKLanguage = true

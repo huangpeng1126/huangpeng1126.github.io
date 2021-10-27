@@ -96,17 +96,17 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "reuixiy"
+    name = "sleepyfish"
     # 邮箱
-    email = "reuixiy@gmail.com"
+    email = "huangpeng1126@126.com"
     # 座右铭或简介
-    motto = "Viva La Vida"
+    motto = "万物皆有裂痕，那是光照进来的地方"
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://io-oi.me/"
+    website = "https://huangpeng1126.github.io/"
     # 推特
-    twitter = "reuixiy"
+    twitter = "huangpeng1126"
 
 # 相关文章
 [related]
@@ -347,7 +347,7 @@ uglyURLs = false
     # 注意：请保持此格式，更改数字
 
     # 站点的推特帐号
-    siteTwitter = "reuixiy"
+    siteTwitter = "huangpeng1126"
     # 说明：用于 Twitter Cards
 
 
@@ -711,7 +711,8 @@ uglyURLs = false
     # 注意：只支持 HSL 颜色值
 
     # 文章的内容宽度
-    postWidth = 36
+    #postWidth = 36
+    postWidth = 72
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
