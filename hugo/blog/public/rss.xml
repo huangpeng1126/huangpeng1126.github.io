@@ -1,159 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <title type="text">瞌睡鱼&amp;花脸猫 个人网站</title>
-    <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-03-01T16:35:40&#43;08:00</updated>
-    <id>https://huangpeng1126.github.io/</id>
-    <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://huangpeng1126.github.io/atom.xml" />
-    <author>
-            <name>瞌睡鱼</name>
-            <uri>https://huangpeng1126.github.io/</uri>
-            
-                <email>huangpeng1126@126.com</email>
-            </author>
-    <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.93.0">Hugo</generator>
-        <entry>
-            <title type="text">JavaScript进阶性学习该看哪些书</title>
-            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/javascript%E8%BF%9B%E9%98%B6%E6%80%A7%E5%AD%A6%E4%B9%A0%E8%AF%A5%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%B9%A6/" />
-            <id>https://huangpeng1126.github.io/posts/javascript%E8%BF%9B%E9%98%B6%E6%80%A7%E5%AD%A6%E4%B9%A0%E8%AF%A5%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%B9%A6/</id>
-            <updated>2021-11-10T10:12:18&#43;08:00</updated>
-            <published>2021-11-10T10:04:03&#43;08:00</published>
-            <author>
-                    <name>瞌睡鱼</name>
-                    <uri>https://huangpeng1126.github.com/</uri>
-                    <email>huangpeng1126@126.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">（搬砖获取链接，后续随着自己学习不间断更新） 如何学习JavaScript？ 如何正确的……</summary>
-            
-                <content type="html">&lt;p&gt;（搬砖获取&lt;a href=&#34;https://sxy91.com/posts/how-to-learn-javascript/&#34;&gt;链接&lt;/a&gt;，后续随着自己学习不间断更新）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如何学习JavaScript？&lt;/li&gt;
-&lt;li&gt;如何正确的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何系统的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何有效的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何循序渐进的学习JavaScript&lt;/li&gt;
-&lt;li&gt;初学者应该如何学习JavaScript&lt;/li&gt;
-&lt;li&gt;JavaScript进阶性学习应该看那些书&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;其中我最喜欢“如何循序渐进地学习JavaScript”这个问法，体现了由浅入深，由点到面，由易到难的缓慢过程。如果有一项类似与地图或者指南针一样的东西，能够指引你达到这样的顶峰或者说目标的话，那么在学习的过程中将避免很多弯路(坑)。这样的东西可以是知识图谱，技能树，或者类似本篇文章(学习指南)。&lt;/p&gt;
-&lt;h3 id=&#34;先说说学js的条件&#34;&gt;&lt;strong&gt;先说说学js的条件&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;学习JS也是有门槛的，就是你的html和css至少还比较熟练，您不能连这东东是干啥的都不知道就开始上JS了，学乘除前，学好加减法总是有益无害的。&lt;/p&gt;
-&lt;h3 id=&#34;几点忠告&#34;&gt;几点忠告&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;不要着急看一些复杂网页效果的代码，这样除了打击你自信心，什么也学不到。没达到一定的武功水平，割了小JJ也学不会葵花宝典的。&lt;/li&gt;
-&lt;li&gt;别急着加技术交流QQ群，加牛人QQ。如果你找张三丰交流武功，你上去第一句问“丰哥，where is 丹田？”，你会被他一掌劈死的&lt;/li&gt;
-&lt;li&gt;看网上什么多少天精通JS，啥啥啥从入门到精通，这种教程直接跳过吧，太多的事实证明，以一种浮躁的心态去做任何事都会以失败而告终&lt;/li&gt;
-&lt;li&gt;千万别去弄啥电脑培训，花了钱和时间不说，关键是学不到东西。本来你买两本好书自学3个月能学会的，他们硬是能折腾你两年&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;推荐几本好书&#34;&gt;推荐几本好书&lt;/h3&gt;
-&lt;h4 id=&#34;第一阶段javascript-dom编程艺术&#34;&gt;第一阶段：《JavaScript DOM编程艺术》&lt;/h4&gt;
-&lt;p&gt;看这本书之前，请先确认您对Javascript有个基本的了解，应该知道if/else之类的语法，如果不懂，先去看看我第二阶段推荐的Javascript高级程序设计的前三章，记住看三章就别往下看了，回到《JavaScript DOM编程艺术》这本书上来。&lt;/p&gt;
-&lt;p&gt;学习Javascript用《JavaScript DOM编程艺术》来入门最好不过了，老老实实看两遍，看完了你就会对JS有一个大概的了解，整本书都围绕着一个网页效果例子展开，你跟着老老实实敲一篇，敲完之后，你会发现这个效果不是常在网页中看到么，发现自己也能做出来网上的效果了，嘿嘿，小有成就感吧。&lt;/p&gt;
-&lt;h4 id=&#34;第二阶段javascript高级程序设计&#34;&gt;第二阶段：《JavaScript高级程序设计》&lt;/h4&gt;
-&lt;p&gt;有的书是用来成为经典的，比如犀牛书；还有些书是用来超越经典的，显然这本书就是这种。书中章章经典，由浅入深，其中第6章，关于JS面向对象的解说，没有教程出其右。&lt;/p&gt;
-&lt;p&gt;如果有一场满分100分的JS考试，看了《JavaScript DOM编程艺术》能让你拿到20分，那么看完这本书，你就能拿到60分以上了，学完后，你会成就感倍增的，相信我（至少看两遍，推荐三篇，跟着书上的代码一行行的敲）&lt;/p&gt;
-&lt;p&gt;这本书强烈推荐购买，写的太TMD牛逼了，给你带来的价值超过百倍千倍。&lt;/p&gt;
-&lt;p&gt;接下来，恭喜你可以下山了，这个时候可以自己做一些事情了：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;你可以去Ferris这个教程看看他写的这些效果，看看源代码，怎么样，是不是觉得有一部分很简单了，尝试着跟着他写一写这些效果吧。&lt;a href=&#34;http://fgm.cc/learn/&#34;&gt;点这里&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;学技术闭门造车是行不通的，适当的加一两个QQ群交流（注重质量），常去论坛（蓝色理想，CSDN）逛逛，你会经常有些小收获的。&lt;/li&gt;
-&lt;li&gt;再有就是看看前辈这些牛人前辈们分享的文章，它会让你的学习事半功倍的，这里是热心人收集的国内一些牛人的博客，个人网站。&lt;a href=&#34;http://bbs.blueidea.com/thread-3031823-1-1.html&#34;&gt;点这里&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;第三阶段javascript语言精粹和高性能javascript&#34;&gt;第三阶段：《JavaScript语言精粹》和《高性能JavaScript》&lt;/h4&gt;
-&lt;p&gt;接下来两本书《JavaScript语言精粹》和《高性能JavaScript》算是JS高级教程的补充，里面有一些内容和JS高级教程重复了，两本书可以同时看，都不厚，可以对前面所学的有一个很好的加强和巩固。&lt;/p&gt;
-&lt;h4 id=&#34;第四阶段javascript-dom高级程序设计和javascript设计模式&#34;&gt;第四阶段：《JavaScript DOM高级程序设计》和《JavaScript设计模式》&lt;/h4&gt;
-&lt;p&gt;在吃透了前面所说的书之后，接下来两本书的顺序已经无关紧要了，《JavaScript DOM高级程序设计》（注意和《JavaScript 高级程序设计》相区别）和《JavaScript设计模式》，这两本都是重量级的书，能让你的JS技术上一个新的台阶；这两本书前者主修炼外功，后者主修炼内功，有点想乾坤大挪移和九阳神功的关系；&lt;/p&gt;
-&lt;p&gt;《JavaScript DOM高级程序设计》 首先教你搭建一个类似JQuery的额工具函数库，然后通过讲解几个实际中经常遇到的几个应用例子，会让初学者受益匪浅。&lt;/p&gt;
-&lt;p&gt;《JavaScript设计模式》主要讲Javascript的设计模式，说实话，翻译的质量很一般，有些生硬，但已经基本不影响你的学习，看代码完全可以理解出自己的意思。&lt;/p&gt;
-&lt;h3 id=&#34;最后想说的&#34;&gt;最后想说的&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;不安逸，不浮躁。任何学习都不是一蹴而就的，牛B就是一个学习积累的过程，别指望两三个月，你的水平就多么厉害。倚天屠龙记里面的武功最牛B的是张三丰，而不是张无忌。&lt;/li&gt;
-&lt;li&gt;任何工作都需要多种技能，别忽略了html,css等其他知识的学习。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-            
-            
-            
-            
-            
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>瞌睡鱼&amp;花脸猫 个人网站</title>
+        <link>https://huangpeng1126.github.io/</link>
+        <description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description>
+        <generator>Hugo 0.93.0 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+            <managingEditor>huangpeng1126@126.com (瞌睡鱼)</managingEditor>
+        
+        
+            <webMaster>huangpeng1126@126.com (瞌睡鱼)</webMaster>
+        
+        
+            <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+        
+        <lastBuildDate>Tue, 01 Mar 2022 16:22:47 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://huangpeng1126.github.io/rss.xml" />
+        
+        
+            <item>
+                <title>读书笔记 《带着恐惧前行》</title>
+                <link>https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/</link>
+                <guid isPermaLink="true">https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/</guid>
+                <pubDate>Fri, 15 Oct 2021 17:57:25 &#43;0800</pubDate>
                 
-                    
+                    <author>huangpeng1126@126.com (瞌睡鱼)</author>
                 
-                    
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-            
-        </entry>
-    
-        <entry>
-            <title type="text">读书笔记 《你就是干不过做PPT的》</title>
-            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9Appt%E7%9A%84/" />
-            <id>https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9Appt%E7%9A%84/</id>
-            <updated>2021-11-01T17:17:38&#43;08:00</updated>
-            <published>2021-11-01T16:44:50&#43;08:00</published>
-            <author>
-                    <name>瞌睡鱼</name>
-                    <uri>https://huangpeng1126.github.com/</uri>
-                    <email>huangpeng1126@126.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">[TOC] 前言</summary>
-            
-                <content type="html">&lt;p&gt;&lt;img src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/images/%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9APPT%E7%9A%84.jpeg&#34; alt=&#34;你就是干不过做PPT的&#34;&gt;&lt;/p&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-</content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/categories/%E8%81%8C%E5%9C%BA/" term="职场" label="职场" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E8%81%8C%E5%9C%BA/" term="职场" label="职场" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/ppt/" term="PPT" label="PPT" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">读书笔记 《带着恐惧前行》</title>
-            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/" />
-            <id>https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/</id>
-            <updated>2021-11-01T14:46:14&#43;08:00</updated>
-            <published>2021-10-15T17:57:25&#43;08:00</published>
-            <author>
-                    <name>瞌睡鱼</name>
-                    <uri>https://huangpeng1126.github.com/</uri>
-                    <email>huangpeng1126@126.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">[TOC] 前言：最近团队建设需要，要求我在团队内部分享一本自己最近看过的书，这让我有些犯难。……</summary>
-            
-                <content type="html">&lt;p&gt;&lt;img src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/images/%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C%EF%BC%9A%E6%89%BE%E5%88%B0%E5%85%8B%E6%9C%8D%E9%80%86%E5%A2%83%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%8C%E5%88%9B%E9%80%A0%E4%BD%A0%E7%83%AD%E7%88%B1%E7%9A%84%E7%94%9F%E6%B4%BB.jpeg&#34; alt=&#34;带着恐惧前行&#34;&gt;&lt;/p&gt;
+                    <description>&lt;p&gt;&lt;img src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/images/%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C%EF%BC%9A%E6%89%BE%E5%88%B0%E5%85%8B%E6%9C%8D%E9%80%86%E5%A2%83%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%8C%E5%88%9B%E9%80%A0%E4%BD%A0%E7%83%AD%E7%88%B1%E7%9A%84%E7%94%9F%E6%B4%BB.jpeg&#34; alt=&#34;带着恐惧前行&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;前言：最近团队建设需要，要求我在团队内部分享一本自己最近看过的书，这让我有些犯难。之前看过的主要是一些技术相关的专业书籍，偶尔看一些非技术书籍都是走马观花的态度快速阅读。其实自己内心也一直想好好静下心来看一本心灵鸡汤类似的书本，也给自己充充电，打打气。工作期间自己的脑力心力都长时间像上紧发条一样在运转，没法让自己停下来，总感觉好多事情没做好，有些事情似乎可以做的更好。这次正好借这次机会让自己沉下心来好好来读一本书。翻了一下自己的电子书库，发现还是有不少存货，但是可惜都没有好好沉下心来阅读。粗筛了一下，找到第一眼有些眼缘的几本书，包括：《你就是干不过做PPT的》、《时间的秩序》、《超级版图：全球供应链、超级城市与新商业文明的崛起》、《哈弗幸福课》、《带着恐惧前行：找到克服逆境的勇气，创造你热爱的生活》、《追时间的人：信息过载时代的知识解决方案》、《世纪三部曲：巨人的陨落+世界的凛冬+永恒的边缘》。有两本书我近期会阅读，一本是《你就是干不过做PPT的》，还有一本就是今天的主角《带着恐惧前行：找到克服逆境的勇气，创造你热爱的生活》。选这两本书也是觉得可能对我当下的状态会有所帮助。当然这里的状态不是指我的工作状态，而是觉得我后期要继续发展的瓶颈。上面啰嗦半天，下面进入正题。&lt;/p&gt;
 &lt;h2 id=&#34;书本介绍&#34;&gt;书本介绍&lt;/h2&gt;
@@ -776,70 +661,71 @@
 &lt;h3 id=&#34;ppt&#34;&gt;PPT&lt;/h3&gt;
 &lt;iframe src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/readingshares/%E8%AF%BB%E4%B9%A6%E5%88%86%E4%BA%AB-%E9%BB%84%E9%B9%8F-%E3%80%8A%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C%E3%80%8B.pptx&#34; width=&#34;700px&#34; height=&#34;500px&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt; &lt;/iframe&gt;
 &lt;iframe src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/readingshares/%E6%8B%86%E4%B9%A6%E4%BC%9A-%E8%B0%B7%E5%A4%A9-%E3%80%8A%E8%B6%85%E7%BA%A7%E7%89%88%E5%9B%BE%E3%80%8B-20201103.pptx&#34; width=&#34;700px&#34; height=&#34;500px&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt; &lt;/iframe&gt;
-</content>
-            
-            
-            
-            
-            
+</description>
+                
+                
+                
+                
                 
                     
                         
                             
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/categories/%E8%AF%BB%E4%B9%A6/">读书</category>
+                                
                             
+                        
+                    
+                        
                             
-                                <category scheme="https://huangpeng1126.github.io/categories/%E8%AF%BB%E4%B9%A6/" term="读书" label="读书" />
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/%E9%B8%A1%E6%B1%A4/">鸡汤</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/%E8%81%8C%E5%9C%BA/">职场</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/nlp/">NLP</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/%E5%9B%BE%E5%83%8F/">图像</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/deep-learning/">Deep Learning</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://huangpeng1126.github.io/tags/%E5%AE%A0%E7%89%A9/">宠物</category>
+                                
                             
                         
                     
                 
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E9%B8%A1%E6%B1%A4/" term="鸡汤" label="鸡汤" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E8%81%8C%E5%9C%BA/" term="职场" label="职场" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/nlp/" term="NLP" label="NLP" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E5%9B%BE%E5%83%8F/" term="图像" label="图像" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" term="深度学习" label="深度学习" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/deep-learning/" term="Deep Learning" label="Deep Learning" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://huangpeng1126.github.io/tags/%E5%AE%A0%E7%89%A9/" term="宠物" label="宠物" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-</feed>
+            </item>
+        
+    </channel>
+</rss>
