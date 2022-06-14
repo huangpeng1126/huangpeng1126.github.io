@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">瞌睡鱼&amp;花脸猫 个人网站</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-03-01T16:35:40&#43;08:00</updated>
+    <updated>2022-06-14T13:53:25&#43;08:00</updated>
     <id>https://huangpeng1126.github.io/</id>
     <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://huangpeng1126.github.io/atom.xml" />
@@ -15,65 +15,132 @@
                 <email>huangpeng1126@126.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.93.0">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.100.2">Hugo</generator>
         <entry>
-            <title type="text">JavaScript进阶性学习该看哪些书</title>
-            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/javascript%E8%BF%9B%E9%98%B6%E6%80%A7%E5%AD%A6%E4%B9%A0%E8%AF%A5%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%B9%A6/" />
-            <id>https://huangpeng1126.github.io/posts/javascript%E8%BF%9B%E9%98%B6%E6%80%A7%E5%AD%A6%E4%B9%A0%E8%AF%A5%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%B9%A6/</id>
-            <updated>2021-11-10T10:12:18&#43;08:00</updated>
-            <published>2021-11-10T10:04:03&#43;08:00</published>
+            <title type="text">Lucene同义词实现分析</title>
+            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/lucene%E5%90%8C%E4%B9%89%E8%AF%8D%E5%AE%9E%E7%8E%B0%E5%88%86%E6%9E%90/" />
+            <id>https://huangpeng1126.github.io/posts/lucene%E5%90%8C%E4%B9%89%E8%AF%8D%E5%AE%9E%E7%8E%B0%E5%88%86%E6%9E%90/</id>
+            <updated>2022-06-14T13:49:44&#43;08:00</updated>
+            <published>2022-06-13T19:27:40&#43;08:00</published>
             <author>
                     <name>瞌睡鱼</name>
                     <uri>https://huangpeng1126.github.com/</uri>
                     <email>huangpeng1126@126.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">（搬砖获取链接，后续随着自己学习不间断更新） 如何学习JavaScript？ 如何正确的……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Lucene的TokenStream类被应用于索引建立或者是查询词分析的时候产生To……</summary>
             
-                <content type="html">&lt;p&gt;（搬砖获取&lt;a href=&#34;https://sxy91.com/posts/how-to-learn-javascript/&#34;&gt;链接&lt;/a&gt;，后续随着自己学习不间断更新）&lt;/p&gt;
+                <content type="html">&lt;p&gt;Lucene的&lt;code&gt;TokenStream&lt;/code&gt;类被应用于索引建立或者是查询词分析的时候产生&lt;code&gt;Token&lt;/code&gt;（更加严谨的说法应该是&lt;code&gt;Term&lt;/code&gt;，因为除了关键词之外，还包括其它的额外信息，例如&lt;code&gt;Token&lt;/code&gt;在原字符串中的位置，&lt;code&gt;Token&lt;/code&gt;的步长以及长度等信息）。它的API是一个迭代器，每次调用&lt;code&gt;incrementToken&lt;/code&gt;可以前进到一下个&lt;code&gt;Token&lt;/code&gt;，然后调用相关的属性类可以获得&lt;code&gt;Token&lt;/code&gt;的相关信息。例如，&lt;code&gt;CharTermAttribute&lt;/code&gt;保留了&lt;code&gt;Token&lt;/code&gt;的文本信息；&lt;code&gt;OffsetAttribute&lt;/code&gt;保存了包括起始位置和结束位置的偏移量。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TokenStream&lt;/code&gt;实际上是一个链的结构，起始位置是一个&lt;code&gt;Tokenizer&lt;/code&gt; 用于实现传统的分词操作，后面跟着若干&lt;code&gt;Filter&lt;/code&gt;用于对分词结果进行更改。此外，&lt;code&gt;CharFilter&lt;/code&gt;的作用是在分词前进行预处理（早于&lt;code&gt;Tokenizer&lt;/code&gt;被调用），例如，可以移除HTML文档的标记，或者是对一些特定字符进行映射操作等。在Lucene中，&lt;code&gt;Analyzer&lt;/code&gt;是一个工厂类负责组装上面的各个部件，包括但是不限于&lt;code&gt;Tokenizer&lt;/code&gt;、&lt;code&gt;xxFilter&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;Lucene和Solr已经预先实现了多种&lt;code&gt;Tokenizer&lt;/code&gt;和&lt;code&gt;Filter&lt;/code&gt;，详情参考它们各自的官方文档。&lt;/p&gt;
+&lt;p&gt;为了能够更好的理解在Lucene和Solr中如何实现分词和同义词功能，下面举一个在全文使用的例子：&lt;code&gt;fast wi fi network is down&lt;/code&gt;，假设我们不考虑通用词，Lucene内部对这段文本的解析可以看做是一个图模型。&lt;code&gt;Lucene&lt;/code&gt;内部实现同义词最开始是通过&lt;code&gt;SynonymFilter&lt;/code&gt;，但是它的内部实现无法有效处理映射到多个单词的同义词实现，因此后来又实现了&lt;code&gt;SynonymGraphFilter&lt;/code&gt;类，它可以处理多种同义词映射的情况。下面先介绍&lt;code&gt;SynonymFilter&lt;/code&gt;（在Lucene中已经不建议使用，但是通过介绍对比可以更好的理解内部同义词的实现逻辑）。&lt;/p&gt;
+&lt;p&gt;如果使用一个图模型来表示上面的文本输入，那么这些&lt;code&gt;tokens&lt;/code&gt;看起来如下图：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+s0((0))
+s1((1))
+s2((2))
+s3((3))
+s4((4))
+s5((5))
+s6((6))
+
+s0--&amp;gt;|fast|s1--&amp;gt;|wi|s2--&amp;gt;|fi|s3--&amp;gt;|network|s4--&amp;gt;|is|s5--&amp;gt;|down|s6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中每一个节点表示一个位置，而一条边表示一个&lt;code&gt;token&lt;/code&gt;。&lt;code&gt;TokenStream&lt;/code&gt;迭代式遍历整个无环图，一次迭代访问一条边。&lt;/p&gt;
+&lt;p&gt;下一步，我们将&lt;code&gt;SynonymFilter&lt;/code&gt;加入到分析链中，使用下面的同义词设置：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;如何学习JavaScript？&lt;/li&gt;
-&lt;li&gt;如何正确的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何系统的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何有效的学习JavaScript&lt;/li&gt;
-&lt;li&gt;如何循序渐进的学习JavaScript&lt;/li&gt;
-&lt;li&gt;初学者应该如何学习JavaScript&lt;/li&gt;
-&lt;li&gt;JavaScript进阶性学习应该看那些书&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;fast --&amp;gt; speedy&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;wi fi --&amp;gt; wifi&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;wifi network --&amp;gt; hostspot&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;其中我最喜欢“如何循序渐进地学习JavaScript”这个问法，体现了由浅入深，由点到面，由易到难的缓慢过程。如果有一项类似与地图或者指南针一样的东西，能够指引你达到这样的顶峰或者说目标的话，那么在学习的过程中将避免很多弯路(坑)。这样的东西可以是知识图谱，技能树，或者类似本篇文章(学习指南)。&lt;/p&gt;
-&lt;h3 id=&#34;先说说学js的条件&#34;&gt;&lt;strong&gt;先说说学js的条件&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;学习JS也是有门槛的，就是你的html和css至少还比较熟练，您不能连这东东是干啥的都不知道就开始上JS了，学乘除前，学好加减法总是有益无害的。&lt;/p&gt;
-&lt;h3 id=&#34;几点忠告&#34;&gt;几点忠告&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;不要着急看一些复杂网页效果的代码，这样除了打击你自信心，什么也学不到。没达到一定的武功水平，割了小JJ也学不会葵花宝典的。&lt;/li&gt;
-&lt;li&gt;别急着加技术交流QQ群，加牛人QQ。如果你找张三丰交流武功，你上去第一句问“丰哥，where is 丹田？”，你会被他一掌劈死的&lt;/li&gt;
-&lt;li&gt;看网上什么多少天精通JS，啥啥啥从入门到精通，这种教程直接跳过吧，太多的事实证明，以一种浮躁的心态去做任何事都会以失败而告终&lt;/li&gt;
-&lt;li&gt;千万别去弄啥电脑培训，花了钱和时间不说，关键是学不到东西。本来你买两本好书自学3个月能学会的，他们硬是能折腾你两年&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;推荐几本好书&#34;&gt;推荐几本好书&lt;/h3&gt;
-&lt;h4 id=&#34;第一阶段javascript-dom编程艺术&#34;&gt;第一阶段：《JavaScript DOM编程艺术》&lt;/h4&gt;
-&lt;p&gt;看这本书之前，请先确认您对Javascript有个基本的了解，应该知道if/else之类的语法，如果不懂，先去看看我第二阶段推荐的Javascript高级程序设计的前三章，记住看三章就别往下看了，回到《JavaScript DOM编程艺术》这本书上来。&lt;/p&gt;
-&lt;p&gt;学习Javascript用《JavaScript DOM编程艺术》来入门最好不过了，老老实实看两遍，看完了你就会对JS有一个大概的了解，整本书都围绕着一个网页效果例子展开，你跟着老老实实敲一篇，敲完之后，你会发现这个效果不是常在网页中看到么，发现自己也能做出来网上的效果了，嘿嘿，小有成就感吧。&lt;/p&gt;
-&lt;h4 id=&#34;第二阶段javascript高级程序设计&#34;&gt;第二阶段：《JavaScript高级程序设计》&lt;/h4&gt;
-&lt;p&gt;有的书是用来成为经典的，比如犀牛书；还有些书是用来超越经典的，显然这本书就是这种。书中章章经典，由浅入深，其中第6章，关于JS面向对象的解说，没有教程出其右。&lt;/p&gt;
-&lt;p&gt;如果有一场满分100分的JS考试，看了《JavaScript DOM编程艺术》能让你拿到20分，那么看完这本书，你就能拿到60分以上了，学完后，你会成就感倍增的，相信我（至少看两遍，推荐三篇，跟着书上的代码一行行的敲）&lt;/p&gt;
-&lt;p&gt;这本书强烈推荐购买，写的太TMD牛逼了，给你带来的价值超过百倍千倍。&lt;/p&gt;
-&lt;p&gt;接下来，恭喜你可以下山了，这个时候可以自己做一些事情了：&lt;/p&gt;
+&lt;p&gt;现在上面的图将变成类似的下图表示：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+s0((0))
+s1((1))
+s2((2))
+s3((3))
+s4((4))
+s5((5))
+s6((6))
+
+s0--&amp;gt;|fast|s1--&amp;gt;|wi|s2--&amp;gt;|fi|s3--&amp;gt;|network|s4--&amp;gt;|is|s5--&amp;gt;|down|s6
+s0--&amp;gt;|speedy|s1
+s1--&amp;gt;|wifi|s3
+s1--&amp;gt;|hotspot|s4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;针对每一个&lt;strong&gt;token(边)&lt;/strong&gt;，需要关注两个属性：&lt;code&gt;PositionIncrementAttribute&lt;/code&gt;告诉我们这条边（token）的起始节点是前面多少个节点&lt;strong&gt;开始的&lt;/strong&gt;，而新增加的&lt;code&gt;PosotionLengthAttribute&lt;/code&gt;告诉我们这条边&lt;strong&gt;覆盖&lt;/strong&gt;（或者说&lt;strong&gt;跨越&lt;/strong&gt;）多少个节点（这条边的&lt;strong&gt;结束节点&lt;/strong&gt;是后面多少个节点）&lt;/p&gt;
+&lt;p&gt;一直以来Lucene的同义词实现方式都存在难以修复的问题，也一直被广大开发者诟病。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Problem 1&lt;/strong&gt;：在索引过程中Lucene完全忽视了&lt;code&gt;PositionLengthAttribute&lt;/code&gt;，只关注&lt;code&gt;PositionIncrementAttribute&lt;/code&gt;，这就导致所有的边只关注&lt;strong&gt;起始节点&lt;/strong&gt;，而忽视&lt;strong&gt;结束节点&lt;/strong&gt;（具体原因可以看上面对于这两个属性的介绍）。因此很多同义词表示的边，不仅仅有共同的起始节点，连结束节点也相同（这其实是一个错误处理方式，下面会介绍带来的问题），因此上面的图实际上变成了下面的图：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+s0((0))
+s1((1))
+s2((2))
+s3((3))
+s4((4))
+s5((5))
+s6((6))
+s0--&amp;gt;|fast|s1--&amp;gt;|wi|s2--&amp;gt;|fi|s3--&amp;gt;|network|s4--&amp;gt;|is|s5--&amp;gt;|down|s6
+s0--&amp;gt;|speedy|s1
+s1--&amp;gt;|hotspot|s2
+s1--&amp;gt;|wifi|s2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Lucene这种处理同义词的方式在遇到&lt;code&gt;phrase query&lt;/code&gt;的时候会发生出乎意料的结果，一些应该匹配的短语查询实际上无法匹配到正确结果，而一些不应该匹配的短语查询却意外的匹配到了错误结果。例如对于短语查询 &lt;code&gt;hostspot is down&lt;/code&gt;应该匹配确没有匹配上，而&lt;code&gt;fast hotspot fi&lt;/code&gt;不应该匹配确匹配成功。当然有些短语匹配可以成功，例如&lt;code&gt;fast hotspot&lt;/code&gt;。发生这种错误的根本原因是输入的图模型被错误的处理成了串行化的图模型。要修复这个问题比较有挑战性，因为需要更改索引结构，在每个位置保存一个额外的&lt;strong&gt;长度&lt;/strong&gt;信息，并且需要同时修复&lt;strong&gt;包含位置的查询处理&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;QueryParser&lt;/code&gt;也存在忽略位置长度属性的问题，但是这个问题修复相对容易，因为我们可以在查询处理的时候对查询词扩展处理来获得正确的结果，这比在索引时修复问题更加简单，因为索引修复涉及到索引重新建立，这个代价很大。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SynonymFilter&lt;/code&gt;的另一个问题是在处理同义词的时候如果替换单元包括多个单词的时候，例如当同义词存在下面的情况：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;你可以去Ferris这个教程看看他写的这些效果，看看源代码，怎么样，是不是觉得有一部分很简单了，尝试着跟着他写一写这些效果吧。&lt;a href=&#34;http://fgm.cc/learn/&#34;&gt;点这里&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;学技术闭门造车是行不通的，适当的加一两个QQ群交流（注重质量），常去论坛（蓝色理想，CSDN）逛逛，你会经常有些小收获的。&lt;/li&gt;
-&lt;li&gt;再有就是看看前辈这些牛人前辈们分享的文章，它会让你的学习事半功倍的，这里是热心人收集的国内一些牛人的博客，个人网站。&lt;a href=&#34;http://bbs.blueidea.com/thread-3031823-1-1.html&#34;&gt;点这里&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;dns --&amp;gt; domain name service&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;第三阶段javascript语言精粹和高性能javascript&#34;&gt;第三阶段：《JavaScript语言精粹》和《高性能JavaScript》&lt;/h4&gt;
-&lt;p&gt;接下来两本书《JavaScript语言精粹》和《高性能JavaScript》算是JS高级教程的补充，里面有一些内容和JS高级教程重复了，两本书可以同时看，都不厚，可以对前面所学的有一个很好的加强和巩固。&lt;/p&gt;
-&lt;h4 id=&#34;第四阶段javascript-dom高级程序设计和javascript设计模式&#34;&gt;第四阶段：《JavaScript DOM高级程序设计》和《JavaScript设计模式》&lt;/h4&gt;
-&lt;p&gt;在吃透了前面所说的书之后，接下来两本书的顺序已经无关紧要了，《JavaScript DOM高级程序设计》（注意和《JavaScript 高级程序设计》相区别）和《JavaScript设计模式》，这两本都是重量级的书，能让你的JS技术上一个新的台阶；这两本书前者主修炼外功，后者主修炼内功，有点想乾坤大挪移和九阳神功的关系；&lt;/p&gt;
-&lt;p&gt;《JavaScript DOM高级程序设计》 首先教你搭建一个类似JQuery的额工具函数库，然后通过讲解几个实际中经常遇到的几个应用例子，会让初学者受益匪浅。&lt;/p&gt;
-&lt;p&gt;《JavaScript设计模式》主要讲Javascript的设计模式，说实话，翻译的质量很一般，有些生硬，但已经基本不影响你的学习，看代码完全可以理解出自己的意思。&lt;/p&gt;
-&lt;h3 id=&#34;最后想说的&#34;&gt;最后想说的&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;不安逸，不浮躁。任何学习都不是一蹴而就的，牛B就是一个学习积累的过程，别指望两三个月，你的水平就多么厉害。倚天屠龙记里面的武功最牛B的是张三丰，而不是张无忌。&lt;/li&gt;
-&lt;li&gt;任何工作都需要多种技能，别忽略了html,css等其他知识的学习。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;如果输入是&lt;code&gt;dns is up and down&lt;/code&gt;对应的图模型如下图：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+s0((0))
+s1((1))
+s2((2))
+s3((3))
+s4((4))
+s5((5))
+s0--&amp;gt;|domain|s1
+s0--&amp;gt;|dns|s1
+s1--&amp;gt;|name|s2
+s1--&amp;gt;|is|s2
+s2--&amp;gt;|service|s3
+s2--&amp;gt;|up|s3
+s3--&amp;gt;|and|s4--&amp;gt;|down|s5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;(name, is)&lt;/code&gt;、&lt;code&gt;(service, up)&lt;/code&gt;这两对代词发生了重叠现象，同样会导致短语查询出现问题。例如：&lt;code&gt;domain name service is up&lt;/code&gt;应该匹配没有匹配，&lt;code&gt;dns name up&lt;/code&gt;不应该匹配却匹配了。如果要使得同义词生效，必须保证被注入的同义词单元都是单独一个单词，例如把上面的同义词替换更改成&lt;code&gt;domain name service --&amp;gt; dns&lt;/code&gt;，上面的两个例子都可以运行正常。&lt;/p&gt;
+&lt;p&gt;从上面的几个例子可以看出，&lt;code&gt;SynonymFilter&lt;/code&gt;在遇上多个单词的同义词注入的时候就会发生问题，再说一次，这个问题也是被广大开发者一直诟病的一个严重问题。&lt;/p&gt;
+&lt;p&gt;下面介绍Lucene新引入的&lt;code&gt;SynonumGraphFilter&lt;/code&gt;，它被Lucene推荐替换&lt;code&gt;SynonymFilter&lt;/code&gt;使用，也就是在新的代码中大家应用使用这个新的类，可以解决&lt;code&gt;SynonymFilter&lt;/code&gt;中遇到的问题。&lt;/p&gt;
+&lt;p&gt;例如，输入还是上面的&lt;code&gt;fast wi fi netowrk is down&lt;/code&gt;，&lt;code&gt;SynonymGraphFilter&lt;/code&gt;的图模型输出如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+s0((0))
+s1((1))
+s2((2))
+s3((3))
+s4((4))
+s5((5))
+s6((6))
+s7((7))
+s1--&amp;gt;|re/wi fi network|s2--&amp;gt;|dian/wi fi network|s5
+s0--&amp;gt;|fast|s1--&amp;gt;|wi|s3--&amp;gt;|fi|s4--&amp;gt;|network|s5--&amp;gt;|is|s6--&amp;gt;|down|s7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到，使用&lt;code&gt;SynonymGraphFilter&lt;/code&gt;的分词结果是正确的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;针对上述提到的同义词问题，在Lucene 6.4.0版本开始得到解决，这个版本引入了一些改进，只要我们在&lt;code&gt;search-time&lt;/code&gt;引入同义词扩展而不是&lt;code&gt;index-time&lt;/code&gt;引入。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【改进一】&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;第一个改进就是新引入了&lt;code&gt;SynonymGraphFilter&lt;/code&gt;类，只要在代码中使用这个类替换之前的&lt;code&gt;SynonymFilter&lt;/code&gt;类，就基本上能产出正确的图模型，无论被注入的同义词是单个单词还是多个单词。同时，如果一定要在索引阶段引入同义词，还可以在&lt;code&gt;SynonymGraphFilter&lt;/code&gt;之后立刻加上&lt;code&gt;FlattenGraphFilter&lt;/code&gt;类，可以基本将正确的信息加入到索引中，但是需要牢记，&lt;code&gt;FlattenGraphFilter&lt;/code&gt;还是会在索引时丢失部分图信息（相对于完整的图模型）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【改进二】&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The second set of vital improvements is to the query parsers. First, the classic query parser had to &lt;a href=&#34;https://issues.apache.org/jira/browse/LUCENE-2605&#34;&gt;stop pre-splitting incoming query text at whitespace&lt;/a&gt;, fixed (after years of controversy!) in Lucene 6.2.0. Be sure to call &lt;code&gt;setSplitOnWhitespace(false)&lt;/code&gt; since the whitespace splitting is still enabled by default to preserve backwards compatibility. This change empowers the query-time analyzer to see multiple tokens as a single string instead of seeing each token separately. &lt;a href=&#34;https://issues.apache.org/jira/browse/LUCENE-6401&#34;&gt;These simplifications to the complex logic in &lt;code&gt;QueryBuilder&lt;/code&gt;&lt;/a&gt; are also an important precursor.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;【改进三】&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The third query parser fix is to &lt;a href=&#34;https://issues.apache.org/jira/browse/LUCENE-7603&#34;&gt;detect when the query-time analyzer produced a graph&lt;/a&gt;, and create accurate queries as a result, also first added in Lucene 6.4.0. The query parser (specifically the &lt;a href=&#34;https://lucene.apache.org/core/6_4_0/core/org/apache/lucene/util/QueryBuilder.html&#34;&gt;&lt;code&gt;QueryBuilder&lt;/code&gt; base class&lt;/a&gt;) now watches the &lt;code&gt;PositionLengthAttribute&lt;/code&gt; and computes all paths through the graph when any token has a value greater than 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;【Limitatioins】&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;To make multi-token synonyms work correctly you must apply your synonyms at query time, not index-time, since a Lucene index cannot store a token graph. Search-time synonyms necessarily require more work (CPU and IO) than index-time synonyms, since more terms must be visited to answer the query, but the index will be smaller. Search-time synonyms are also more flexible, since you don&#39;t need to re-index when you change your synonyms, which is important for very large indices.&lt;/p&gt;
+&lt;p&gt;Another challenge is that &lt;code&gt;SynonymGraphFilter&lt;/code&gt;, while producing correct graphs, cannot &lt;em&gt;consume&lt;/em&gt; a graph, which means you cannot for example use &lt;code&gt;WordDelimiterGraphFilter&lt;/code&gt; or &lt;code&gt;JapaneseTokenizer&lt;/code&gt; followed by &lt;code&gt;SynonymGraphFilter&lt;/code&gt; and expect synonyms to match the incoming graph fragments.&lt;/p&gt;
+&lt;p&gt;This is quite tricky to fix given the current &lt;code&gt;TokenStream&lt;/code&gt; APIs, and there is a compelling experimental branch &lt;a href=&#34;http://issues.apache.org/jira/browse/LUCENE-5012&#34;&gt;to explore a simpler API for creating graph token streams&lt;/a&gt;. While the synonym filter on that branch can already consume a graph, there is still plenty of work to be done before the change can be merged (patches welcome!).&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
             
             
@@ -82,41 +149,11 @@
             
                 
                     
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">读书笔记 《你就是干不过做PPT的》</title>
-            <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9Appt%E7%9A%84/" />
-            <id>https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9Appt%E7%9A%84/</id>
-            <updated>2021-11-01T17:17:38&#43;08:00</updated>
-            <published>2021-11-01T16:44:50&#43;08:00</published>
-            <author>
-                    <name>瞌睡鱼</name>
-                    <uri>https://huangpeng1126.github.com/</uri>
-                    <email>huangpeng1126@126.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">[TOC] 前言</summary>
-            
-                <content type="html">&lt;p&gt;&lt;img src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/images/%E4%BD%A0%E5%B0%B1%E6%98%AF%E5%B9%B2%E4%B8%8D%E8%BF%87%E5%81%9APPT%E7%9A%84.jpeg&#34; alt=&#34;你就是干不过做PPT的&#34;&gt;&lt;/p&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-</content>
-            
-            
-            
-            
-            
-                
-                    
                         
                             
                             
                             
-                                <category scheme="https://huangpeng1126.github.io/categories/%E8%81%8C%E5%9C%BA/" term="职场" label="职场" />
+                                <category scheme="https://huangpeng1126.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
                             
                         
                     
@@ -126,13 +163,19 @@
                             
                             
                             
-                                <category scheme="https://huangpeng1126.github.io/tags/%E8%81%8C%E5%9C%BA/" term="职场" label="职场" />
+                                <category scheme="https://huangpeng1126.github.io/tags/%E6%90%9C%E7%B4%A2/" term="搜索" label="搜索" />
                             
                         
                             
                             
                             
-                                <category scheme="https://huangpeng1126.github.io/tags/ppt/" term="PPT" label="PPT" />
+                                <category scheme="https://huangpeng1126.github.io/tags/java/" term="java" label="java" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://huangpeng1126.github.io/tags/lucene/" term="lucene" label="lucene" />
                             
                         
                     
@@ -144,7 +187,7 @@
             <title type="text">读书笔记 《带着恐惧前行》</title>
             <link rel="alternate" type="text/html" href="https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/" />
             <id>https://huangpeng1126.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B8%A6%E7%9D%80%E6%81%90%E6%83%A7%E5%89%8D%E8%A1%8C/</id>
-            <updated>2021-11-01T14:46:14&#43;08:00</updated>
+            <updated>2022-06-14T11:44:49&#43;08:00</updated>
             <published>2021-10-15T17:57:25&#43;08:00</published>
             <author>
                     <name>瞌睡鱼</name>
@@ -186,7 +229,7 @@
 &lt;img src=&#34;https://github.com/huangpeng1126/huangpeng1126.github.io/raw/master/images/Do_It_Scared_Reopt/Do_It_Scared_report_01.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;拖延者--最害怕犯错&#34;&gt;拖延者 —— 最害怕犯错&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;完美主义并不如想象的那样追求完美，它只是用拖延的方式来掩饰内心对失败的恐惧。
-										——丹·米勒 (Dan Miller)
+                                        ——丹·米勒 (Dan Miller)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;拖延者经常被称作完美主义者，主要表现为，&lt;em&gt;害怕承诺，担心无法很好的完成&lt;/em&gt;，或者是，&lt;em&gt;害怕开始一件事情，担心会有错误的举动&lt;/em&gt;。在研究完美主义的学者如 D.Hamachek 看来，完美主义可以分为「积极完美主义」和「消极（神经症性的）完美主义」两类。前者追求完美，在事情做得不尽如人意时也会生气，但起码可以把事做完；即使偶尔拖延，也不会拖过最后期限。此外，他们也能从自己的努力中得到满足感。后者则喜欢追求不切实际的目标，容易分心，而且还会在达不到目标时感到沮丧和自责。功能稍好的拖延者往往能在最后期限之前把事情勉强搞定，而功能稍差的则会无限期拖下去。不用说，拖延者显然是偏向消极完美主义较多。&lt;/p&gt;
 &lt;p&gt;拖延者有一个很显著的特征，他会试图寻找——且经常能找到——任何可能的合理理由，解释自己为何不采取行动或不做出尝试。&lt;/p&gt;
@@ -349,11 +392,11 @@
 &lt;li&gt;
 &lt;p&gt;建立责任关系
 寻找一个和你属于不同恐惧类型的人（例如&lt;em&gt;被排斥者&lt;/em&gt;）帮助平衡你身上讨好人的倾向。最理想的状况是，找到愿意将你推出舒适区的人，帮你练习拒绝别人、关照自己&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;QA：你身边谁最适合这个角色&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;被排斥者--最害怕遭到拒绝&#34;&gt;被排斥者 —— 最害怕遭到拒绝&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;我最擅长的事就是走开，被拒教会你如何拒绝。
                  ——珍妮特·温特森（Jeanette Winterson）
@@ -408,15 +451,15 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;建立责任关系&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;QA：你身边谁会比较适合这个角色？&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;自我怀疑者--最害怕自己不够好&#34;&gt;自我怀疑者 —— 最害怕自己不够好&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;一旦怀疑自己是不是能飞，你就永远都飞不起来了。
                  ——詹姆斯·马修·巴利（J. M. Barrie）
-                 		   《彼得·潘》（Peter Pan）
+                            《彼得·潘》（Peter Pan）
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;自我怀疑者往往被一种深刻且时常不易察觉的不安全感所困扰，他们最担心自己不具备足够的能力，常常表现为害怕自己不够好。自我怀疑者有时试图通过吹毛求疵或评头论足，来掩饰或平复内心的不安全感。他们将自己的无价值感转移到周围人，尤其是身边最亲近的人身上，那些正在冒险、放手一搏，或追逐目标与梦想的人，因此，自我怀疑者偶尔会被贴上&lt;strong&gt;尖酸刻薄&lt;/strong&gt;的标签。
 自我怀疑者大多谦虚谨慎，不喜夸耀，不事张扬。他们一般不爱自吹自擂、骄傲自大，也不会自我膨胀。自我怀疑者往往是异常努力的工作人员，总愿竭尽全力，从而弥补内心的脆弱。
@@ -461,16 +504,22 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;策略-4&#34;&gt;策略&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;重塑观念
-心理建设：“失败乃成功之母”，我们犯的错，遭遇的失败，正在教会我们一切所需要的知识，帮我们前进&lt;/li&gt;
-&lt;li&gt;采取行动
-通过很多小的尝试，从舒适区迈出一小步，逐步成功&lt;/li&gt;
-&lt;li&gt;建立责任关系&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;重塑观念
+心理建设：“失败乃成功之母”，我们犯的错，遭遇的失败，正在教会我们一切所需要的知识，帮我们前进&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;采取行动
+通过很多小的尝试，从舒适区迈出一小步，逐步成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建立责任关系&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;QA: 你身边谁比较适合和你建立责任关系来克服这类恐惧？
 参考答案：结对编程（这是一个很典型的互助方式帮助自己提升，克服“自我怀疑的恐惧”&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;爱找借口者--最害怕承担责任&#34;&gt;爱找借口者 —— 最害怕承担责任&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;失败比找借口更容易通向成功。
                  ——约翰·麦克斯韦尔（John C. Maxwell）
