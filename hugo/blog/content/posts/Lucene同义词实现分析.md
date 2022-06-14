@@ -1,7 +1,19 @@
 ---
 title: "Lucene同义词实现分析"
 date: 2022-06-13T19:27:40+08:00
-draft: true
+#draft: true
+
+categories:
+#  - "读书"
+  - "技术"
+#  - "理财"
+#  - "旅游"
+#  - "生活"
+
+tags: 
+  - "搜索"
+  - "java"
+  - "lucene"
 ---
 
 Lucene的`TokenStream`类被应用于索引建立或者是查询词分析的时候产生`Token`（更加严谨的说法应该是`Term`，因为除了关键词之外，还包括其它的额外信息，例如`Token`在原字符串中的位置，`Token`的步长以及长度等信息）。它的API是一个迭代器，每次调用`incrementToken`可以前进到一下个`Token`，然后调用相关的属性类可以获得`Token`的相关信息。例如，`CharTermAttribute`保留了`Token`的文本信息；`OffsetAttribute`保存了包括起始位置和结束位置的偏移量。
@@ -107,8 +119,6 @@ s3-->|and|s4-->|down|s5
 
 从上面的几个例子可以看出，`SynonymFilter`在遇上多个单词的同义词注入的时候就会发生问题，再说一次，这个问题也是被广大开发者一直诟病的一个严重问题。
 
-
-
 下面介绍Lucene新引入的`SynonumGraphFilter`，它被Lucene推荐替换`SynonymFilter`使用，也就是在新的代码中大家应用使用这个新的类，可以解决`SynonymFilter`中遇到的问题。
 
 例如，输入还是上面的`fast wi fi netowrk is down`，`SynonymGraphFilter`的图模型输出如下：
@@ -128,8 +138,6 @@ s0-->|fast|s1-->|wi|s3-->|fi|s4-->|network|s5-->|is|s6-->|down|s7
 ```
 
 可以看到，使用`SynonymGraphFilter`的分词结果是正确的。
-
-
 
 **解决方案**
 
@@ -154,7 +162,3 @@ s0-->|fast|s1-->|wi|s3-->|fi|s4-->|network|s5-->|is|s6-->|down|s7
 > Another challenge is that `SynonymGraphFilter`, while producing correct graphs, cannot *consume* a graph, which means you cannot for example use `WordDelimiterGraphFilter` or `JapaneseTokenizer` followed by `SynonymGraphFilter` and expect synonyms to match the incoming graph fragments.
 > 
 > This is quite tricky to fix given the current `TokenStream` APIs, and there is a compelling experimental branch [to explore a simpler API for creating graph token streams](http://issues.apache.org/jira/browse/LUCENE-5012). While the synonym filter on that branch can already consume a graph, there is still plenty of work to be done before the change can be merged (patches welcome!).
-
-
-
-
