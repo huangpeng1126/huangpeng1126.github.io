@@ -100,19 +100,19 @@ Lucene这种处理同义词的方式在遇到`phrase query`的时候会发生出
 
 ```mermaid
 flowchart LR
-s0((0))
-s1((1))
-s2((2))
-s3((3))
-s4((4))
-s5((5))
-s0-->|domain|s1
-s0-->|dns|s1
-s1-->|name|s2
-s1-->|is|s2
-s2-->|service|s3
-s2-->|up|s3
-s3-->|and|s4-->|down|s5
+s0((0));
+s1((1));
+s2((2));
+s3((3));
+s4((4));
+s5((5));
+s0 --> |domain| s1;
+s0 --> |dns| s1;
+s1 --> |name| s2;
+s1 --> |is| s2;
+s2 --> |service| s3;
+s2 --> |up| s3;
+s3 --> |and| s4 --> |down| s5;
 ```
 
 `(name, is)`、`(service, up)`这两对代词发生了重叠现象，同样会导致短语查询出现问题。例如：`domain name service is up`应该匹配没有匹配，`dns name up`不应该匹配却匹配了。如果要使得同义词生效，必须保证被注入的同义词单元都是单独一个单词，例如把上面的同义词替换更改成`domain name service --> dns`，上面的两个例子都可以运行正常。
