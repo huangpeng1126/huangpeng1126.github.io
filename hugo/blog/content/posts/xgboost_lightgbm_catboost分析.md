@@ -249,12 +249,12 @@ $$
 Gain_{split} &= \frac{1}{2} \left[\frac{(\sum_{i \in I_L} g_i)^2}{\sum_{i \in I_L}h_i + \lambda} + 
     \frac{(\sum_{i \in I_R} g_i)^2}{\sum_{i \in I_R}h_i + \lambda} 
     - \frac{(\sum_{i \in I} g_i)^2}{\sum_{i \in I}h_i + \lambda} \right] 
-    - \lambda  \\
+    - \gamma  \\
             &= \frac{1}{2} \left[   
                     \frac{G_L^2}{H_L+\lambda}
                   + \frac{G_R^2}{H_R+\lambda}
                   - \frac{(G_L+G_R)^2}{(H_L+H_R+\lambda}  
-                 \right] - \lambda
+                 \right] - \gamma
 \end{split}
 \end{equation*}
 $$
@@ -329,6 +329,60 @@ $$
 
 ## LightGBM
 
-$\$
+> 先给一个概念性的总结来给LightGBM vs XGBoost定性：
+> 
+> - Hitogram
+> 
+> - GOSS算法
+> 
+> - EFB算法
+> 
+> - Voting算法
+> 
+> - Leaf-wise树生长
+> 
+> - Categorical feature内部自动处理
+> 
+> 通过上述三个主要算法优化策略，LightGBM对比XGBoost最大的优点是 **快** 
+
+xgboost最大的问题是计算效率，从上面对xgboost的介绍也可以看到最大的计算资源消耗在分裂点的计算过程。分裂点计算涉及到：① 对每个feature在所有的样本上的排序，如果样本特征空间很大，以及数据集也很大，那么这个排序需要耗费大量的资源：$N_f \times Ns$。其中$N_f$是特征空间维度，$N_s$是样本数量。LightGBM的提出也正是针对xgboost存在的问题。先给出LightGBM的改进点：
+
+- 基于Histogram的决策树算法（xgboost也实现了）
+
+- **单边梯度采样（Gradient-based One-Side Sampling, GOSS）** 使用GOSS可以减少大量只具有小梯度的数据实例，这样在计算信息增益的时候只利用剩下的具有高梯度的数据就可以了，相比XGBoost遍历所有特征值节省了不少时间和空间上的开销
+
+- **互斥特征捆绑 (Exclusive Feature Bundling, EFB)** 使用EFB可以将许多互斥的特征绑定为一个特征，这样达到了降维的目的
+
+- **Leaf-wise决策树生长策略** 大多数GBDT工具使用低效的按层生长 (level-wise) 的决策树生长策略，因为它不加区分的对待同一层的叶子，带来了很多没必要的开销。实际上很多叶子的分裂增益较低，没必要进行搜索和分裂。LightGBM使用了带有深度限制的按叶子生长 (leaf-wise) 算法
+
+- **直接支持类别特征** 
+
+### 直方图策略
+
+Histogram algorithm并不是一个很新颖的创新，在统计学被大量使用。这里也只是给一个简单的介绍。直方图算法的基本思想是：先把连续的浮点特征值离散化成 $k$个整数，同时构造一个宽度为 $k$ 的直方图。在遍历数据的时候，根据离散化后的值作为索引在直方图中累积统计量，当遍历一次数据后，直方图累积了需要的统计量，然后根据直方图的离散值，遍历寻找最优的分割点。特征离散化有很多优点：存储方便、运算更快、鲁棒性强、模型更加稳定等，我们在这里突出最显著的两个优点：
+
+![](https://www.researchgate.net/publication/346577317/figure/fig3/AS:1001743705993216@1615845719667/Histogram-algorithm.png)
+
+![](https://www.researchgate.net/publication/350848994/figure/fig2/AS:1019742676582401@1620137008154/Histogram-algorithm-of-LightGBM.ppm)
+
+-     **内存占用小**： 直方图算法不仅不需要额外存储预排序的结果，而且可以只保存特征离散化后的值，而这个值一般用$8$位整型存储就足够了，内存消耗可以降低为原来的 $8$ 。也就是说XGBoost需要用$32$位的浮点数去存储特征值，并用$32$位的整形去存储索引，而 LightGBM只需要用$8$ 位去存储直方图，内存相当于减少为 $\frac{1}{8}$；
+
+![](https://pic4.zhimg.com/v2-3064f201bc8545f851c7ccf47921c0e7_r.jpg)
+
+- **计算代价更小**：预排序算法XGBoost每遍历一个特征值就需要计算一次分裂的增益，而直方图算法LightGBM只需要计算 $k$次（ $k$可以认为是常数），直接将时间复杂度从$O(\#data \times \#feature) $ 降低到$ O(k \times \#feature) $，而我们知道$\#data >> k$。
+
+由于特征被离散化后，找到的并不是很精确的分割点，所以会对结果产生影响。但是试验显示离散化的分割点对最终的精确度影响微乎其微，甚至有时候效果更加好。其原因是决策树在这里是一个弱模型（weak learner），分割点不精准对最终模型的影响不大，而且更加粗略的分割点也能一定程度上起到正则化的效果，可以有效防止过拟合。另外，即使单棵决策树的效果不好，但是在梯度提升(Gradient Boosting)的框架下影响不大，这一切都是采用Histogram策略的基础。
+
+LightGBM的另外一个优化是对Histogram做**差加速**。`一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到，在速度上可以提升一倍`。通常构造直方图时，需要遍历该叶子上的所有数据，但直方图做差仅需遍历直方图的k个桶。在实际构建树的过程中，LightGBM还可以先计算直方图小的叶子节点，然后利用直方图做差来获得直方图大的叶子节点，这样就可以用非常微小的代价得到它兄弟叶子的直方图。
+
+![](https://pic4.zhimg.com/v2-b51f2764c13ca0a7b4cb41849a367a87_b.jpg)
+
+### 带深度限制的Leaf-Wise算法
+
+$$
+L(y,\hat{y}) = ln(1+e^{-y\hat{y}}), y \in \{-1, 1\}) \\
+g = L^{'} = \frac {-y} {1+e^{y\hat{y}}} \\
+h = g^{'} = \left(  \frac{-y}{1+e^{y\hat{y}}}\right)^{`} = 
+$$
 
 ## CatBoost
