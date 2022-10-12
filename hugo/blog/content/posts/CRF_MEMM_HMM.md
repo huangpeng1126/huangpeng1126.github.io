@@ -120,7 +120,7 @@ $$
 > $$
 > \begin{equation}
 \begin{aligned}
-P(X) &= \frac{1}{Z} \prod\limits_{c \in C_G} \phi_c(X_c) \\
+P(X) &= \frac{1}{Z} \prod\limits_{c \in C_G} \phi_c(X_c) \\\\
 Z &= \sum\limits_x \prod\limits_{c \in C_G} \phi_c(X_c)
 \end{aligned}
 \end{equation}
@@ -128,7 +128,7 @@ Z &= \sum\limits_x \prod\limits_{c \in C_G} \phi_c(X_c)
 > 
 > C_G是G上所有（最大）团的集合，c代表一个具体的`clique`（实际上是一个小的集合），Z是归一化常量，保证满足概率定义。
 > 
-> A probability distribution P(X) on an undirected graphical model G is called a Gibbs distribution if it can be factorized into positive functions defined on cliques that cover all the nodes and edges of G. That is equation (2), where C_G is a set of all (maximal) cliques in G and Z = \sum_x \prod_{c \in C_G} \phi_c(X_c) is the normalization constant.
+> A probability distribution P(X) on an undirected graphical model G is called a Gibbs distribution if it can be factorized into positive functions defined on cliques that cover all the nodes and edges of G. That is equation (2), where $G_C$ is a set of all (maximal) cliques in G and $Z = \sum_x \prod_{c \in C_G} \phi_c(X_c) $is the normalization constant.
 > 
 > Hammersley Clifford clas 认为，MRF和Gibbs分布是一致的，也就是说：
 > 
@@ -197,46 +197,44 @@ Hammersley Clifford证明了上面两个定义是等价的，下面搬运证明�
 
 ## 反向证明（吉布斯分布—> MRF）
 
-设$D_i = N_i \cup {X_i}$是包含$X_i$邻居顶点和$X_i$本身的集合。从上面等式(1)的右边开始。另外我们引入一些符号定义：$D_i = N_i \cup \{X_i\}$是包含$X_i$和它邻居定点的集合，无向图$G$的最大团为$G_C$，并且通过判断定点$X_i$是否包含在`clique`可以将集合$G_C$分成两个集合：$C_i=c \in G_C: X_i \in c$和$R_i = c \in G_C: X_i \notin G_C$，且$C_i \cup R_i = G_C$。
+设$D_i = N_i \cup {X_i}$是包含$X_i$邻居顶点和$X_i$本身的集合。从上面等式(1)的右边开始。另外我们引入一些符号定义：$D_i = N_i \cup \{X_i\}$是包含$X_i$和它邻居定点的集合，无向图$G$的最大团为$G_C$，并且通过判断定点$X_i$是否包含在`clique`可以将集合$G_C$分成两个集合：$C_i=c \in G_C: X_i \in c$和$R_i = c \in G_C: X_i \notin G_C$，且$C_i \cup R_i = G_C$。下面是证明过程：
 
 $$
 \begin{equation}
 \begin{aligned}
-
-P(X_i \mid X_{N_i}) &= \frac{P(X_i,X_{N_i})}{P(X_{N_i})} \\
+P(X_i \mid X_{N_i}) &= \frac{P(X_i,X_{N_i})}{P(X_{N_i})} \\\\
 &= \frac{\sum\limits_{G\backslash D_i} P(X_i,X_{N_i},X_{G\backslash D_i})}
-   {\sum\limits_{x_i}\sum\limits_{G\backslash D_i}P(X_i,X_{N_i},X_{G\backslash D_i}) }\\
+   {\sum\limits_{x_i}\sum\limits_{G\backslash D_i}P(X_i,X_{N_i},X_{G\backslash D_i}) }\\\\
 &= \frac{\sum\limits_{G\backslash D_i} \prod\limits_{c \in G_C} \phi_c(X_c)} 
-    {\sum\limits_{x_i}\sum\limits_{G\backslash D_i} \prod\limits_{c \in G_C} \phi_c(X_c)} \\
+    {\sum\limits_{x_i}\sum\limits_{G\backslash D_i} \prod\limits_{c \in G_C} \phi_c(X_c)} \\\\
 &= \frac{\sum\limits_{G\backslash D_i} \prod\limits_{c \in C_i}\phi_c(X_c) \prod\limits_{c \in R_i}\phi_c(X_c)}
-  {\sum\limits_{x_i}\sum\limits_{G\backslash D_i} \prod\limits_{c \in C_i}\phi_c(X_c) \prod\limits_{c \in R_i}\phi_c(X_c)} \\
+  {\sum\limits_{x_i}\sum\limits_{G\backslash D_i} \prod\limits_{c \in C_i}\phi_c(X_c) \prod\limits_{c \in R_i}\phi_c(X_c)} \\\\
 &= \frac{\prod\limits_{c \in C_i}\phi_c(X_c) \left( \sum\limits_{G\backslash D_i} \prod\limits_{c \in R_i}\phi_c(X_c)  \right)}
-  {\left(\sum\limits_{x_i} \prod\limits_{c \in C_i}\phi_c(X_c) \right)  \left(\sum\limits_{G\backslash D_i} \prod\limits_{c \in R_i}\phi_c(X_c) \right) }\\
+  {\left(\sum\limits_{x_i} \prod\limits_{c \in C_i}\phi_c(X_c) \right)  \left(\sum\limits_{G\backslash D_i} \prod\limits_{c \in R_i}\phi_c(X_c) \right) }\\\\
 &= \frac{\prod\limits_{c \in C_i}\phi_c(X_c)}{\sum\limits_{x_i} \prod\limits_{c \in C_i}\phi_c(X_c)} \times 
-  \frac{\prod\limits_{c \in R_i}\phi_c(X_c)}{\prod\limits_{c \in R_i}\phi_c(X_c)} \\
+  \frac{\prod\limits_{c \in R_i}\phi_c(X_c)}{\prod\limits_{c \in R_i}\phi_c(X_c)} \\\\
 &= \frac{{1 \over Z} \prod\limits_{c \in G_C} \phi_c(X_c)}
-  {{1 \over Z} \sum\limits_{x_i}\prod\limits_{c \in G_C} \phi_c(X_c)} \\
+  {{1 \over Z} \sum\limits_{x_i}\prod\limits_{c \in G_C} \phi_c(X_c)} \\\\
 &= \frac{P(X)}{P(X_{G\backslash i})} = P(X_i \mid X_{G\backslash i})
 \end{aligned}
 \end{equation}
+
 $$
 
-最终公式(3)的结论和公式(1)相同。上面的证明是严格推到，下面给出一个比较有体感的特殊例子证明。我们这次从前面的全局马尔可夫来证明下图中公式成立。
+最终公式(3)的结论和公式(1)相同。上面的证明是严格推导，下面给出一个比较有体感的特殊例子证明。我们这次从前面的全局马尔可夫来证明下图中公式成立。
 
 从上面的全局马尔可夫图可以得出：$P(x_A,x_B,x_c) = {1 \over Z} \phi(x_A, x_c) \phi(x_B,x_C)$，我们要证明$P(x_A,x_B \mid x_C) = P(x_A \mid x_C) P(x_B \mid x_C)$，下面给出证明：
 
 $$
 \begin{equation}
 \begin{aligned}
-P(x_A,x_B \mid x_C) &= \frac{P(x_A,x_B,x_C)}{P(x_C)} \\
-&= \frac{P(x_A,x_B,x_C)}{\sum_{x_A}\sum_{x_B}P(x_A,x_B,x_C)} \\
-&= \frac{\phi_{AC}(x_A,x_C) \phi_{BC}(x_B,x_C)}{\sum_{x_A}\sum_{x_B} \phi_{AC}(x_A,x_C) \phi_{BC}(x_B,x_C)} \\
+P(x_A,x_B \mid x_C) &= \frac{P(x_A,x_B,x_C)}{P(x_C)} \\\\
+&= \frac{P(x_A,x_B,x_C)}{\sum_{x_A}\sum_{x_B}P(x_A,x_B,x_C)} \\\\
+&= \frac{\phi_{AC}(x_A,x_C) \phi_{BC}(x_B,x_C)}{\sum_{x_A}\sum_{x_B} \phi_{AC}(x_A,x_C) \phi_{BC}(x_B,x_C)} \\\\
 &= \frac{\phi_{AC}(x_A,x_C)}{\sum_{x_A}\phi_{AC}(x_A,x_C)} \times
-   \frac{\phi_{BC}(x_B,x_C)}{\sum_{x_B}\phi_{BC}(x_B,x_C)} \\
-&= \frac{P(x_A,x_C)}{P(x_C)} \times \frac{P(x_B,x_C)}{P(x_C)} \\
+   \frac{\phi_{BC}(x_B,x_C)}{\sum_{x_B}\phi_{BC}(x_B,x_C)} \\\\
+&= \frac{P(x_A,x_C)}{P(x_C)} \times \frac{P(x_B,x_C)}{P(x_C)} \\\\
 &= P(x_A \mid x_C) \cdot P(x_B \mid x_C)
-
-
 \end{aligned}
 \end{equation}
 $$
