@@ -1,7 +1,7 @@
 ---
 title: "CRF_MEMM_HMM"
 date: 2022-10-08T11:55:22+08:00
-draft: true
+#draft: true
 ---
 
 # 预备知识
@@ -107,13 +107,9 @@ $$
 
 这个公式也可以改写为：$P(Y_v \mid Y_{\mathcal O}, Y_{\mathcal W}) = P(Y_v \mid P_{\mathcal W})$
 
-
-
 #### 成对马尔可夫
 
 假设无向图$G$中任意两个没有边连接的节点$u,v$，其它所有节点为$\mathcal O$，成对马尔可夫：给定$Y_{\mathcal O}$条件下，$Y_u, Y_v$条件独立。$P(Y_u, Y_v \mid Y_{\mathcal O}) = P(Y_u \mid Y_{\mathcal O}) P(Y_v \mid Y_{\mathcal O})$
-
-
 
 上面介绍了成对、局部和全局马尔可夫性，使用大白话来说就是每一个节点的分布只和有边相连的节点有关系。**其实最大团的概念就是从成对马尔可夫衍生过来，只需要把上面的节点理解为节点集合**。
 
@@ -197,8 +193,6 @@ subgraph 马尔科夫网络
 end
 ```
 
-
-
 Hammersley Clifford证明了上面两个定义是等价的，下面搬运证明过程
 
 ## 反向证明（吉布斯分布—> MRF）
@@ -247,14 +241,8 @@ P(x_A,x_B \mid x_C) &= \frac{P(x_A,x_B,x_C)}{P(x_C)} \\
 \end{equation}
 $$
 
-
-
-
-
 ## 正向证明（MRF—>吉布斯分布）
 
 没看明白，待续
-
-
 
 # CRF
