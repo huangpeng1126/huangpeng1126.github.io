@@ -245,11 +245,11 @@ $$
 
 # CRF
 
-> 一般定义：设$X$与$Y$是随机变量，$P(Y \mid X)$是在给定$X$的条件下$Y$的条件概率分布。若随机变量$Y$构成一个由无向图$G=(V, E)$表示的**马尔可夫随机场**，即：
+> **条件随机场定义**：设$X$与$Y$是随机变量，$P(Y \mid X)$是在给定$X$的条件下$Y$的条件概率分布。若随机变量$Y$构成一个由无向图$G=(V, E)$表示的**马尔可夫随机场**，即：
 > 
 > $P(Y_v \mid X, Y_w; w \ne v) = P(Y_v \mid X, Y_w; w \sim v)$
 > 
-> 对任意顶点$v$成立，则称条件概率分布$P(Y \mid X)$ 为**随机条件场**。 
+> 对任意顶点$v$成立，则称**条件概率分布**$P(Y \mid X)$ 为**随机条件场**。 
 > 
 > 其中：
 > 
@@ -258,6 +258,10 @@ $$
 >   $w \ne v$ 表示定点$v$ 以外的所有定点；
 > 
 > $Y_v,Y_w$为定点$v$与$w$对应的随机变量
+
+常见的条件随机场图结构如下图：
+
+![](https://raw.githubusercontent.com/huangpeng1126/huangpeng1126.github.io/master/images/crf_hmm.png)
 
 ## 链式随机条件场
 
@@ -279,3 +283,69 @@ $$
 <img title="" src="https://pic1.zhimg.com/80/v2-cebd08fab5f567dff1ca16e2d204984c_1440w.webp" alt="" data-align="center" width="495">
 
 ## 线性条件随机场公式
+
+> **Linear-chaiin CRFs Definition**: Let $X, Y$ be random vectors, $\theta = \{\theta_k\} \in \mathcal{R}^K$ be a parameter vector, and $\mathcal{F}=\{f_k(y, y, x_t)\}$ be a set of real-valued functions, Then *a linear-chain conditional random field* is a distribution $p(y \mid x)$ that takes the form:
+> 
+> $$
+> \begin{equation}
+\begin{aligned}
+p(y \mid x) &= {1 \over Z(x)} \prod_{t=1}^T exp \left[ \sum_{k=1}^K
+\theta_k f_k(y_t,y_{t-1},x_t)  \right] \\\\
+&= \frac{exp\left(\sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t) \right)}{Z(x)}   \\\\
+Z(x) &= \sum_y exp\left[\sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t)
+\theta_kf_k(y_t,y_{t-1},x_t) \right]
+\end{aligned}
+\end{equation}
+> $$
+> 
+> where $Z(x)$ is an input-depedent normalizatioin function.
+
+上面的公式定义中使用的是`log-linear`形式的函数，在通用CRFs中使用的是通用函数定义：$\Psi_t(y_t,y_{t-1},x_t \rightarrow \theta_k f_k(y_t,y_{t-1},x_t)$
+
+CRF的具体例子和参数估计方式，可以参考[知乎CRF文档](https://zhuanlan.zhihu.com/p/483820319)
+
+## CRF在词性标注的应用
+
+目标函数正如公式(5)所定义，而我们的目标是最大化上面的线性条件随机场示意图中的隐状态序列的得分（即$p(y\mid x)$，因此我们需要计算每个隐状态序列$y$对应的得分。根据公式定义，我们在应用CRF做词性标注的时候，需要首先完成特征函数$f_k$的设计，然后通过大量数据来学习参数集合$\theta_k$。接下来我们将介绍如何确定参数$\theta_k$。
+
+通过公式(5)我们已经知道了条件概率的函数定义，可以使用MLE方法来求解最优参数。
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathcal{L}(\theta) &= \prod_{i=1}^N p(y_i \mid x_i) \\\\
+&= \prod_{i=1}^N \frac{exp\left(\sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t) \right)}{Z(x)} \\\\
+ln(\mathcal{L}(\theta)) &= \sum_{i=1}^N\left(\sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t)-ln(Z(x)\right)
+
+\end{aligned}
+\end{equation}
+$$
+
+继续，通过计算偏导数求极值（如果使用Pytorch或TensorFlow等支持自动求导的框架，直接使用$\mathcal{Loss}$函数即可）：
+
+$$
+{\partial (ln(\mathcal{L}(\theta))) \over {\partial \theta_k}}
+ = \sum_{i=1}^N\left(\sum_{t=1}^T f_k(y_t,y_{t-1},x_t) - {1 \over Z(x)} {\partial Z(x) \over \partial \theta_k} \right)
+$$
+
+对$\partial Z(x) \over \partial \theta_k$单独求导：
+
+$$
+\begin{aligned}
+{\partial Z(x) \over \partial \theta_k} &= \sum_y exp \left( \sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t)
+\theta_kf_k(y_t,y_{t-1},x_t) \right) * \sum_{t=1}^T f_k(y_t,y_{t-1},x_t)  \\\\
+{1 \over Z(x)} {\partial Z(x) \over \partial \theta_k} &= \sum_y \left[
+\frac{exp \left( \sum\limits_{t=1}^T\sum\limits_{k=1}^K \theta_k f_k(y_t,y_{t-1},x_t)
+\theta_kf_k(y_t,y_{t-1},x_t)\right)}{Z(x)}*\sum_{t=1}^T f_k(y_t,y_{t-1},x_t)\right]\\\\
+&= \sum_y \left[ p(y\mid x) * \sum_{t=1}^T f_k(y_t,y_{t-1},x_t) \right]
+\end{aligned}
+$$
+
+所以，最终对似然函数的求导结果为
+
+$$
+{\partial (ln(\mathcal{L}(\theta))) \over {\partial \theta_k}}
+= \sum_{i=1}^N\left[\sum_{t=1}^T f_k(y_t,y_{t-1},x_t) - \sum_y \left( p(y\mid x) * \sum_{t=1}^T f_k(y_t,y_{t-1},x_t)\right) \right]
+$$
+
+上面公式中，$\sum_{t=1}^T f_k(y_t,y_{t-1},x_t)$ 只需要遍历一遍样本就可以求出，但是后半部分求解十分复杂，因为假设$x_{1:n}, y_{1:m}$，那么$y$的求解空间是$m^n$。这个概率求解我们可以通过HMM里的`向前-向后算法求解`。
